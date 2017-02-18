@@ -1,0 +1,40 @@
+﻿<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="text-center thumbnail">
+            <h2>New Book</h2>
+            <hr />
+            <form name="form" novalidate>
+                <div class="form-group">
+                    <div class="btn btn-default btn-file">
+                        BROWSE
+                        <input type="file"
+                               ngf-select name="file" ng-model="file" ngf-patter="'image/*'"
+                               ng-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="50"
+                               ng-resize="{width: 50, height: 50}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <img ng-src="{{file.$ngfBlobUrl}}" class="book-image">
+                </div>
+                <div class="form-group">
+                    <select id="authorDropdown" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control text-center" name="title" ng-model="book.Title" placeholder="Title" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control text-center" name="publishedYear" ng-model="book.PublishedYear" placeholder="Published Year" required />
+                </div>
+                
+                <div class="form-group">
+                    <input type="button" class="form-control" ng-click="submit()" value="SAVE" />
+                </div>
+            </form>
+            <p>
+                <a href="#author/new">New Author</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+<ng-include src="'app/views/error-modal.html'" />

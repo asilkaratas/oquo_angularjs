@@ -1,0 +1,28 @@
+﻿<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="text-center thumbnail">
+            <h2>User Detail</h2>
+            <hr />
+            <p>
+                <img ng-src="{{user.PhotoUrl}}" class="user-image">
+            </p>
+            <h2 class="text-capitalize">
+                {{user.FirstName}}
+                {{user.LastName}}
+            </h2>
+            <p class="badge">
+                {{user.FollowingCount}} Following
+            </p>
+            <p class="badge">
+                {{user.FollowerCount}} Followers
+            </p>
+
+            <p>
+                <input type="button" class="form-control" ng-show="!user.IsFollowed && !user.IsSelf" ng-click="follow()" value="FOLLOW"/>
+                <input type="button" class="form-control" ng-show="user.IsFollowed && !user.IsSelf" ng-click="unfollow()" value="UNFOLLOW"/>
+                <input type="button" class="form-control" ng-click="edit()" ng-show="user.IsSelf" value="EDIT"/>
+            </p>
+        </div>
+    </div>
+</div>
+

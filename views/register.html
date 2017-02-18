@@ -1,0 +1,36 @@
+﻿<div class="row login-page">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+        <div>
+            <img class="form-group" src="./content/img/logo.png" />
+        </div>
+        <div class="login-seperator"></div>
+        <div class="login-text">
+            your reading companion
+        </div>
+        <form name="registerForm" novalidate>
+            <div class="input-container">
+                <input type="email" class="input" name="email" ng-model="registerData.Email" placeholder="Email" required />
+                <span class="alert-danger glyphicon glyphicon-exclamation-sign" ng-show="registerForm.email.$invalid" />
+            </div>
+            <div class="input-seperator"></div>
+            <div class="input-container">
+                <input type="password" class="input" name="password" ng-model="registerData.Password" placeholder="Password" required />
+                <span class="alert-danger glyphicon glyphicon-exclamation-sign" ng-show="registerForm.password.$invalid" />
+            </div>
+            <div class="input-seperator"></div>
+            <div class="input-container">
+                <input type="password" class="input" name="confirmPassword" ng-model="registerData.ConfirmPassword" placeholder="Confirm Password" required />
+                <span class="alert-danger glyphicon glyphicon-exclamation-sign" ng-show="registerForm.confirmPassword.$invalid" />
+            </div>
+            <div class="input-container">
+                <input type="submit" class="button login-btn" ng-click="submit()" value="REGISTER" />
+            </div>
+           
+            <div>
+                <span class="login-text">Do you have an account?</span>
+                <a href="#login" class="text-btn">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-include src="'app/views/error-modal.html'" />

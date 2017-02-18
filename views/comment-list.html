@@ -1,0 +1,15 @@
+﻿<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class=" thumbnail">
+            <h2 class="text-center">Comments</h2>
+            <hr />
+            <div ng-repeat="comment in comments">
+
+                <p>
+                    <img ng-src="{{comment.User.PhotoUrl}}" class="comment-user-image">
+                    <a href="#user/{{comment.User.Id}}">{{comment.User.FirstName}} {{comment.User.LastName}}</a> {{comment.Text}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

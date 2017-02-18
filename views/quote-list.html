@@ -1,0 +1,72 @@
+﻿<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div>
+            <div ng-repeat="quote in quotes">
+                <div class="quote-card">
+                    <div class="row quote-header">
+                        <div class="quote-header-image-container">
+                            <img ng-src="{{quote.User.PhotoUrl}}" class="user-image">
+                        </div>
+                        
+                        <div class="quote-header-text-container">
+                            <span>
+                                <a class="quote-header-user-name text-capitalize" href="#user/{{quote.User.Id}}"> {{quote.User.FirstName}} {{quote.User.LastName}}</a>
+                            </span>
+                            <br />
+                            <span>
+                                <a class="quote-header-book-title text-capitalize" href="#book/{{quote.Book.Id}}"> {{quote.Book.Title}}</a>
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <img ng-src="{{quote.PhotoUrl}}" class="quote-image">
+                    </div>
+
+                    <div class="row quote-content">
+                        <h4 >
+                            {{quote.Text}}
+                        </h4>
+                        <hr />
+                        <p>
+                            <span class="badge">{{quote.LikeCount}} Likes</span>
+                            <button class="btn" ng-show="!quote.IsLiked" ng-click="like(quote)">Like</button>
+                            <button class="btn" ng-show="quote.IsLiked" ng-click="dislike(quote)">Dislike</button>
+
+                            <button class="btn" ng-show="!quote.IsReported" ng-click="report(quote)">report</button>
+                            <button class="btn" ng-show="quote.IsReported" ng-click="unreport(quote)">unreport</button>
+                        </p>
+
+                        <p>
+                            <span class="btn btn-link"><a href="#quote/{{quote.Id}}/comment">{{quote.CommentCount}} Comments</a></span>
+                        </p>
+                        <ul class="list">
+                            <li ng-repeat="comment in quote.Comments | orderBy:'Id':reverse">
+                                <p>
+                                    <img ng-src="{{comment.User.PhotoUrl}}" class="comment-user-image">
+                                    <span>
+                                        <a href="#user/{{comment.User.Id}}">{{comment.User.FirstName}} {{comment.User.LastName}}</a> {{comment.Text}}
+                                    </span>
+                                </p>
+                            </li>
+                        </ul>
+                        <hr />
+                        <div>
+                            <form  novalidate>
+                                <div class="form-group">
+                                    <input class="form-control full-width-input" type="text" name="text" ng-model="quote.commentText" placeholder="Enter Comment" required />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="button" class="form-control full-width-input" ng-click="addComment(quote)" value="Send" />
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<ng-include src="'app/views/error-modal.html'" />
